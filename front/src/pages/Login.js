@@ -48,8 +48,22 @@ function Login() {
         })
         .catch((err) => {
           setLoading(false);
-          if (err.response.data.errors) {
-            setServerErrors(err.response.data.errors);
+          if (err.response) {
+            const status = err.response.status;
+            const errorMessage = err.response.data.message;
+            if (status === 400) {
+              if (errorMessage === "User not found") {
+                setServerErrors([{ msg: "You currently do not have an account" }]);
+              } else if (errorMessage === "Password is incorrect!") {
+                setServerErrors([{ msg: "Password is incorrect!" }]);
+              } else {
+                setServerErrors([{ msg: errorMessage }]);
+              }
+            } else if (status === 401) {
+              setServerErrors([{ msg: "Unauthorized access!" }]);
+            } else {
+              setServerErrors([{ msg: "An unexpected error occurred. Please try again." }]);
+            }
           } else {
             console.log(err);
           }

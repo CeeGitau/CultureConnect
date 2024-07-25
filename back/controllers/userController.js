@@ -45,13 +45,13 @@ const Login = async (req, res) => {
     const userExist = await UserModel.findOne({ email });
     if (!userExist) {
       return res.status(400).json({
-        error: [{ msg: "User not registered!" }],
+        message: "User not found"
       });
     }
     const isPasswordOK = await bcrypt.compare(password, userExist.password);
     if (!isPasswordOK) {
       return res.status(400).json({
-        error: [{ msg: "Password is incorrect!" }],
+        message: "Password is incorrect!"
       });
     }
     const token = jwt.sign({ _id: userExist._id }, process.env.JWT_SECRET_KEY, {
@@ -62,7 +62,7 @@ const Login = async (req, res) => {
     return res.status(201).json({ success: true, user, token });
   } catch (err) {
     console.log(err);
-    return res.status(500).json({ error: err.message });
+    return res.status(500).json({ message: err.message });
   }
 };
 
