@@ -165,89 +165,98 @@ function UpdateProfile() {
 
   return (
     <>
-      {loading && <Loader />}
-      <Navbar />
-      <div className="profile-container">
-        <h2 className="profile-heading">User Profile</h2>
-        <div className="profile-details">
-          <div className="profile-picture">
-            <img
-              src={profilePicPreview}
-              alt="Profile"
-              className="profile-img"
+  {loading && <Loader />}
+  <Navbar />
+  <div className="profile-container">
+    <h2 className="profile-heading">User Profile</h2>
+    <div className="profile-details">
+      <div className="profile-picture">
+        <img
+          src={profilePicPreview}
+          alt="Profile"
+          className="profile-img"
+        />
+        <input type="file" onChange={handleImageUpload} name="image" />
+      </div>
+      <div className="profile-info">
+        <p>Username: {user.name}</p>
+        <p>E-mail: {user.email}</p>
+        <div className="profile-input">
+          <label htmlFor="firstname">First Name</label>
+          <input
+            type="text"
+            onChange={handleChange}
+            name="firstname"
+            value={values.firstname}
+            placeholder="Enter your first name"
+          />
+        </div>
+        <div className="profile-input">
+          <label htmlFor="lastname">Last Name</label>
+          <input
+            type="text"
+            onChange={handleChange}
+            name="lastname"
+            value={values.lastname}
+            placeholder="Enter your last name"
+          />
+        </div>
+        <div className="gender-options">
+          <div>
+            <input
+              type="radio"
+              name="gender"
+              value="male"
+              id="male"
+              checked={values.gender === "male"}
+              onChange={handleChange}
+              className="form-radio"
             />
-            <input type="file" onChange={handleImageUpload} name="image" />
+            <label htmlFor="male" className="form-radio-label">
+              Male
+            </label>
           </div>
           <div>
-            <p>Username: {user.name}</p>
-            <p>E-mail: {user.email}</p>
-            <label htmlFor="firstname">First Name</label>
             <input
-              type="text"
+              type="radio"
+              name="gender"
+              value="female"
+              id="female"
+              checked={values.gender === "female"}
               onChange={handleChange}
-              name="firstname"
-              value={values.firstname}
-              placeholder="Enter your first name"
+              className="form-radio"
             />
-            <label htmlFor="lastname">Last Name</label>
-            <input
-              type="text"
-              onChange={handleChange}
-              name="lastname"
-              value={values.lastname}
-              placeholder="Enter your last name"
-            />
-            <div className="gender-options">
-              <div>
-                <input
-                  type="radio"
-                  name="gender"
-                  value="male"
-                  id="male"
-                  checked={values.gender === "male"}
-                  onChange={handleChange}
-                  className="form-radio"
-                />
-                <label htmlFor="male" className="form-radio-label">
-                  Male
-                </label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  name="gender"
-                  value="female"
-                  id="female"
-                  checked={values.gender === "female"}
-                  onChange={handleChange}
-                  className="form-radio"
-                />
-                <label htmlFor="female" className="form-radio-label">
-                  Female
-                </label>
-              </div>
-            </div>
+            <label htmlFor="female" className="form-radio-label">
+              Female
+            </label>
           </div>
-          <br />
-          <div className="profile-ethnicity">
-            <strong>Ethnicity:</strong>
-            <select name="ethnicity" onChange={handleChange}>
-              <option value="">Select Ethnicity</option>
-              {tribesOfKenya.map((tribe) => (
-                <option key={tribe} value={tribe}>
-                  {tribe}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="profile-bio">
-            <strong>Bio:</strong>
-            <textarea name="bio" onChange={handleChange} value={values.bio} />
-          </div>
-          <button onClick={handleSubmit}>Save Your Profile</button>
         </div>
+        <div className="profile-input">
+          <label htmlFor="ethnicity">Ethnicity</label>
+          <select name="ethnicity" onChange={handleChange} value={values.ethnicity}>
+            <option value="">Select Ethnicity</option>
+            {tribesOfKenya.map((tribe) => (
+              <option key={tribe} value={tribe}>
+                {tribe}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="profile-bio">
+          <label htmlFor="bio">Bio</label>
+          <textarea
+            name="bio"
+            onChange={handleChange}
+            value={values.bio}
+            placeholder="Tell us about yourself"
+          />
+        </div>
+        <button onClick={handleSubmit} className="edit-profile-link">Save Your Profile</button>
       </div>
-    </>
+    </div>
+  </div>
+</>
+
   );
 }
 

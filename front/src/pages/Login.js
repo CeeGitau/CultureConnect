@@ -40,7 +40,7 @@ function Login() {
             setIsOnline(true);
             toast.success(`Welcome ${res.data.user.name}`, {
               position: "top-right",
-              autoClose: 5000,
+              autoClose: 2000,
             });
 
             navigate("/dashboard");

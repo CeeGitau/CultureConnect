@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { UserContext } from "../App";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../assests/css/userProfile.css";
+import "../assests/css/addProfile.css";
 import { toast } from "react-toastify";
 import defaultProfilePic from "../assests/css/defaultProfilePic.png";
 import Loader from "./loader";
@@ -65,7 +65,6 @@ function AddProfile() {
   const handleSubmit = (e) => {
     setLoading(true);
     e.preventDefault();
-    console.log(values);
     const valuesData = {
       ...values,
       image: image,
@@ -119,13 +118,12 @@ function AddProfile() {
   if (!user) {
     return <p>Please log in to view your profile</p>;
   }
-
+  //<input type="file" onChange={handleImageUpload} name="image" />
   return (
     <>
       {loading && <Loader />}
       <div className="profile-container">
         <h2 className="profile-heading">User Profile</h2>
-
         <div className="profile-details">
           <div className="profile-picture">
             <img
@@ -135,23 +133,33 @@ function AddProfile() {
             />
             <input type="file" onChange={handleImageUpload} name="image" />
           </div>
-          <div>
-            <p>Username: {user.name}</p>
-            <p>E-mail: {user.email}</p>
-            <label htmlFor="firstname">First Name</label>
-            <input
-              type="text"
-              onChange={handleChange}
-              name="firstname"
-              placeholder="Enter your first name"
-            />
-            <label htmlFor="lastname">Last Name</label>
-            <input
-              type="text"
-              onChange={handleChange}
-              name="lastname"
-              placeholder="Enter your last name"
-            />
+          <div className="profile-info">
+            <p className="profile-info-item">Username: {user.name}</p>
+            <p className="profile-info-item">E-mail: {user.email}</p>
+            <div className="profile-input">
+              <label htmlFor="firstname" className="profile-label">
+                First Name
+              </label>
+              <input
+                type="text"
+                onChange={handleChange}
+                name="firstname"
+                placeholder="Enter your first name"
+                className="profile-input"
+              />
+            </div>
+            <div className="profile-input">
+              <label htmlFor="lastname" className="profile-label">
+                Last Name
+              </label>
+              <input
+                type="text"
+                onChange={handleChange}
+                name="lastname"
+                placeholder="Enter your last name"
+                className="profile-input"
+              />{" "}
+            </div>
             <div className="gender-options">
               <div>
                 <input
@@ -180,24 +188,39 @@ function AddProfile() {
                 </label>
               </div>
             </div>
+            <div className="profile-input">
+              <div className="profile-ethnicity">
+                <label htmlFor="ethnicity" className="profile-label">
+                  Ethnicity
+                </label>
+                <select
+                  name="ethnicity"
+                  onChange={handleChange}
+                  className="profile-select"
+                >
+                  <option value="">Select Ethnicity</option>
+                  {tribesOfKenya.map((tribe) => (
+                    <option key={tribe} value={tribe}>
+                      {tribe}
+                    </option>
+                  ))}
+                </select>
+              </div>{" "}
+            </div>
+            <div className="profile-bio">
+              <label htmlFor="bio" className="profile-label">
+                Bio
+              </label>
+              <textarea
+                name="bio"
+                onChange={handleChange}
+                className="profile-textarea"
+              />
+            </div>
+            <button onClick={handleSubmit}  className="edit-profile-link">
+              Save Your Profile
+            </button>
           </div>
-          <br />
-          <div className="profile-ethnicity">
-            <strong>Ethnicity:</strong>
-            <select name="ethnicity" onChange={handleChange}>
-              <option value="">Select Ethnicity</option>
-              {tribesOfKenya.map((tribe) => (
-                <option key={tribe} value={tribe}>
-                  {tribe}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="profile-bio">
-            <strong>Bio:</strong>
-            <textarea name="bio" onChange={handleChange} />
-          </div>
-          <button onClick={handleSubmit}>Save Your Profile</button>
         </div>
       </div>
     </>

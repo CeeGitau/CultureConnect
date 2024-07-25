@@ -80,6 +80,7 @@ const getUserProfile = async (req, res) => {
         ethnicity: profile.ethnicity,
         email: profile.email,
         username: profile.username,
+        image: profile.image,
       },
     });
   } catch (error) {

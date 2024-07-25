@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { UserContext } from "../App";
 import axios from "axios";
-import "../assests/css/userProfile.css";
+import "../assests/css/userDetails.css";
 import { toast } from "react-toastify";
 import Navbar from "../components/Navbar";
 import defaultProfilePic from "../assests/css/defaultProfilePic.png";
@@ -44,7 +44,9 @@ function UserDetails() {
       }
     } catch (error) {
       console.error("Error fetching profile:", error);
-      toast.error("Error fetching profile data", { position: "top-right" });
+      toast.error("This user has not set up a profile yet", {
+        position: "top-right",
+      });
     }
   }, [id]);
 
@@ -60,29 +62,51 @@ function UserDetails() {
 
   return (
     <>
-      <Navbar />
-      <div className="profile-container">
-        <h2 className="profile-heading">User Profile</h2>
-        <div className="profile-details">
-          <div className="profile-picture">
-            <img
-              src={profilePicPreview}
-              alt="Profile"
-              className="profile-img"
-            />
+    <Navbar />
+    <div className="profile-container">
+      <h2 className="profile-heading">User Profile</h2>
+      <div className="profile-details">
+        <div className="profile-picture">
+          <img
+            src={profilePicPreview}
+            alt="Profile"
+            className="profile-img"
+          />
+        </div>
+        <div className="profile-info">
+          <div className="profile-info-row">
+            <strong>Username:</strong>
+            <span>{values.username}</span>
           </div>
-          <div>
-            <p>Username: {values.username}</p>
-            <p>E-mail: {values.email}</p>
-            <p>First Name:{values.firstname}</p>
-            <p>Last Name:{values.lastname}</p>
-            <p>Gender:{values.gender}</p>
-            <p>Ethnicity:{values.ethnicity}</p>
-            <p>Bio:{values.bio}</p>
+          <div className="profile-info-row">
+            <strong>E-mail:</strong>
+            <span>{values.email}</span>
+          </div>
+          <div className="profile-info-row">
+            <strong>First Name:</strong>
+            <span>{values.firstname}</span>
+          </div>
+          <div className="profile-info-row">
+            <strong>Last Name:</strong>
+            <span>{values.lastname}</span>
+          </div>
+          <div className="profile-info-row">
+            <strong>Gender:</strong>
+            <span>{values.gender}</span>
+          </div>
+          <div className="profile-info-row">
+            <strong>Ethnicity:</strong>
+            <span>{values.ethnicity}</span>
+          </div>
+          <div className="profile-info-row">
+            <strong>Bio:</strong>
+            <span>{values.bio}</span>
           </div>
         </div>
       </div>
-    </>
+    </div>
+  </>
+
   );
 }
 

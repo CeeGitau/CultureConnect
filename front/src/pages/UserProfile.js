@@ -40,7 +40,6 @@ function UserProfile() {
         setLoading(false);
       }
 
-      console.log(response.data.results);
       if (filteredProfile) {
         setLoading(false);
         setValues({
@@ -83,7 +82,7 @@ function UserProfile() {
     });
   };
 
-  const handleImageUpload = async (e) => {
+  /*const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     try {
       const base64Image = await convertFileToBase64(file);
@@ -93,7 +92,7 @@ function UserProfile() {
       console.error("Error converting image file:", error);
       toast.error("Error uploading image file", { position: "top-right" });
     }
-  };
+  };*/
 
   if (!user) {
     return <p>Please log in to view your profile</p>;
@@ -103,6 +102,7 @@ function UserProfile() {
     <>
       {loading && <Loader />}
       <Navbar />
+      <br />
       {data ? (
         <div className="profile-container">
           <h2 className="profile-heading">User Profile</h2>
@@ -113,27 +113,30 @@ function UserProfile() {
                 alt="Profile"
                 className="profile-img"
               />
-              <input type="file" onChange={handleImageUpload} name="image" />
             </div>
-            <div>
+            <div className="profile-info">
               <p>Username: {user.name}</p>
               <p>E-mail: {user.email}</p>
-              <label htmlFor="firstname">First Name</label>
-              <input
-                type="text"
-                onChange={handleChange}
-                name="firstname"
-                value={values.firstname}
-                placeholder="Enter your first name"
-              />
-              <label htmlFor="lastname">Last Name</label>
-              <input
-                type="text"
-                onChange={handleChange}
-                name="lastname"
-                value={values.lastname}
-                placeholder="Enter your last name"
-              />
+              <div className="profile-input">
+                <label htmlFor="firstname">First Name</label>
+                <input
+                  type="text"
+                  onChange={handleChange}
+                  name="firstname"
+                  value={values.firstname}
+                  placeholder="Enter your first name"
+                />
+              </div>
+              <div className="profile-input">
+                <label htmlFor="lastname">Last Name</label>
+                <input
+                  type="text"
+                  onChange={handleChange}
+                  name="lastname"
+                  value={values.lastname}
+                  placeholder="Enter your last name"
+                />
+              </div>
               <div className="gender-options">
                 <div>
                   <input
@@ -164,22 +167,32 @@ function UserProfile() {
                   </label>
                 </div>
               </div>
+              <div className="profile-input">
+                <label htmlFor="ethnicity">Ethnicity</label>
+                <input
+                  type="text"
+                  name="ethnicity"
+                  value={values.ethnicity}
+                  onChange={handleChange}
+                  placeholder="Enter your ethnicity"
+                />
+              </div>
+              <div className="profile-bio">
+                <label htmlFor="bio">Bio</label>
+                <textarea
+                  name="bio"
+                  onChange={handleChange}
+                  value={values.bio}
+                  placeholder="Tell us about yourself"
+                />
+              </div>
             </div>
-            <br />
-            <div className="profile-ethnicity">
-              <strong>Ethnicity:</strong>
-              <input
-                type="text"
-                name="ethnicity"
-                value={values.ethnicity}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="profile-bio">
-              <strong>Bio:</strong>
-              <textarea name="bio" onChange={handleChange} value={values.bio} />
-            </div>
-            <Link to={`/update-profile/${user._id}`}>Edit your profile</Link>
+            <Link
+              to={`/update-profile/${user._id}`}
+              className="edit-profile-link"
+            >
+              Edit your profile
+            </Link>
           </div>
         </div>
       ) : (
