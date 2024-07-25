@@ -178,6 +178,7 @@ function ConversationDetails() {
                   </div>
                 ) : null}
                 {renderAudioPlayer()}
+                <br/>
                 <hr />
                 <br />
                 <div className="like-container">
@@ -186,20 +187,19 @@ function ConversationDetails() {
                       <FontAwesomeIcon
                         icon={faSolidHeart}
                         className="icon"
-                        style={{ color: "red", fontSize: "40px" }}
+                        style={{ color: "red",  }}
                       />
                     ) : (
                       <FontAwesomeIcon
                         icon={faRegularHeart}
                         className="icon"
-                        style={{ color: "white", fontSize: "40px" }}
+                        style={{ color: "white", }}
                       />
                     )}
                   </button>{" "}
                   <FontAwesomeIcon
                     icon={faComment}
                     className="icon"
-                    style={{ color: "white", fontSize: "40px" }}
                   />
                   {commentsCount}
                 </div>

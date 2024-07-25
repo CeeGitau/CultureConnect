@@ -119,3 +119,11 @@
 .edit-profile-link:hover {
   background-color: #0056b3;
 }
+
+.profile-select {
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+}

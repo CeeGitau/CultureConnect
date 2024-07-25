@@ -14,11 +14,11 @@
 }
 
 .conversation-details-container {
-  max-width: 600px;
-  margin: 4%;
+  max-width: 450px;
+  margin: 2%;
   color: azure;
   padding: 25px;
-  background-color: #8e5e2a80;
+  background-color: #9f6d3852;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -76,7 +76,7 @@
   align-items: center;
   justify-content: center;
   align-items: center;
-  font-size: 40px;
+  font-size: 25px;
 }
 
 .icon-button {
