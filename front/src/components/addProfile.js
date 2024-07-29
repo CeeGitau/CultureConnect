@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-//import { UserContext } from "../App";
 import UserContext from "../pages/UserContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -110,6 +109,7 @@ function AddProfile() {
     try {
       const base64Image = await convertFileToBase64(file);
       setImage(base64Image);
+      setProfilePicPreview(base64Image); // Update preview with the uploaded image
     } catch (error) {
       console.error("Error converting image file:", error);
       toast.error("Error uploading image file", { position: "top-right" });
@@ -119,11 +119,11 @@ function AddProfile() {
   if (!user) {
     return <p>Please log in to view your profile</p>;
   }
-  //<input type="file" onChange={handleImageUpload} name="image" />
+
   return (
     <>
       {loading && <Loader />}
-      <div className="profile-container">
+      <div className="profile-container" data-cy="profile-page">
         <h2 className="profile-heading">User Profile</h2>
         <div className="profile-details">
           <div className="profile-picture">
@@ -159,7 +159,7 @@ function AddProfile() {
                 name="lastname"
                 placeholder="Enter your last name"
                 className="profile-input"
-              />{" "}
+              />
             </div>
             <div className="gender-options">
               <div>
@@ -206,7 +206,7 @@ function AddProfile() {
                     </option>
                   ))}
                 </select>
-              </div>{" "}
+              </div>
             </div>
             <div className="profile-bio">
               <label htmlFor="bio" className="profile-label">
@@ -218,7 +218,7 @@ function AddProfile() {
                 className="profile-textarea"
               />
             </div>
-            <button onClick={handleSubmit}  className="edit-profile-link">
+            <button onClick={handleSubmit} className="edit-profile-link">
               Save Your Profile
             </button>
           </div>
