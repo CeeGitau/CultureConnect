@@ -34,10 +34,10 @@ describe("Test 'Add Conversation' Component", () => {
     cy.get('[data-cy="form"]').should("exist");
   });
 
-  it("Should handle successful conversation submission", () => {
+  it("Should handle conversation submission successfully", () => {
     cy.intercept("POST", "addConversation", {
       statusCode: 200,
-      body: { success: true, toke: "fakeToken", user: { name: `${mockUser}` } },
+      body: { success: true, token: "fakeToken", user: { name: `${mockUser}` } },
     }).as("addConversation");
 
     cy.get('[data-cy="category"]').select("Food & Cuisine");

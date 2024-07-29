@@ -141,11 +141,11 @@ function Comments({ conversationId, onCommentsCountUpdate }) {
                       icon={faTrashAlt}
                       className="table-icon"
                       onClick={() => handleDelete(comment._id)}
+                      data-cy="delete-button"
                     />
                   </div>
                 )}
               </div>
-
               <br />
               <hr />
             </li>
@@ -154,15 +154,20 @@ function Comments({ conversationId, onCommentsCountUpdate }) {
       ) : (
         <p className="no-comments-msg">No comments yet</p>
       )}
-      <div className="comment-input-container">
+      <div className="comment-input-container" data-cy="comment-container">
         <input
           type="text"
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
           placeholder="Add a comment"
           className="comment-input"
+          data-cy="comment-input"
         />
-        <button onClick={handleNewComment} className="comment-submit-btn">
+        <button
+          onClick={handleNewComment}
+          className="comment-submit-btn"
+          data-cy="submit-button"
+        >
           Post
         </button>
       </div>

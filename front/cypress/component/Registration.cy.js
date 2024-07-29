@@ -34,7 +34,7 @@ describe("Test User Registration", () => {
       .should("have.value", "password123");
   });
 
-  it("Should handle successful form submission", () => {
+  it("Should handle form submission successfully", () => {
     cy.intercept("POST", "register", {
       statusCode: 200,
       body: { success: true },
