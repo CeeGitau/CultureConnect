@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import { UserContext } from "../App";
+//import { UserContext } from "../App";
+import UserContext from "../pages/UserContext";
 import axios from "axios";
 import "../assests/css/userDetails.css";
 import { toast } from "react-toastify";

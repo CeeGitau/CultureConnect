@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import "../assests/css/conversation.css";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { UserContext } from "../App";
+//import { UserContext } from "../App";
+import UserContext from "../pages/UserContext";
 import Loader from "./loader";
 
 function AddConversation() {

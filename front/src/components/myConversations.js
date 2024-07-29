@@ -12,7 +12,9 @@ import Navbar from "../components/Navbar";
 import "../assests/css/conversation.css";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { UserContext } from "../App";
+//import { UserContext } from "../App";
+
+import UserContext from "../pages/UserContext";
 import Icons from "./icons.js";
 import Loader from "./loader";
 

@@ -4,14 +4,13 @@ import Register from "./pages/Register";
 import Logout from "./pages/Logout";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
-//import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
 import UserProfile from "./pages/UserProfile";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ProtectedRoutes from "./components/protectedRoutes";
 import About from "./pages/About";
 import Conversation from "./pages/Conversation";
@@ -23,8 +22,7 @@ import ConversationDetails from "./components/conversationDetails";
 import AddProfile from "./components/addProfile";
 import UpdateProfile from "./components/updateProfile";
 import UserDetails from "./components/userDetails";
-
-export const UserContext = createContext(null);
+import UserContext from "./pages/UserContext"; 
 
 axios.defaults.baseURL = "http://localhost:3001/CultureConnect/";
 axios.defaults.withCredentials = true;
@@ -76,6 +74,7 @@ const router = createBrowserRouter([
   { path: "/about", element: <About /> },
   { path: "*", element: <NotFound /> },
 ]);
+
 function App() {
   const [user, setUser] = useState();
   const [isOnline, setIsOnline] = useState(false);

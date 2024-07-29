@@ -1,23 +1,22 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "../assests/css/navbar.css";
-import unityIcon from "../assests/icons/unity.png"
+import unityIcon from "../assests/icons/unity.png";
 import OnlineIndicator from "../components/onlineIndicator.js";
-
-import { UserContext } from "../App";
+import UserContext from "../pages/UserContext";
 
 function Navbar() {
   const { user, isOnline } = useContext(UserContext);
   return (
     <div className="navbar">
-     <div className="navbar-left">
-  <Link to="/" className="navbar-brand">
-    <div className="navbar-brand-container">
-      <img src={unityIcon} alt="img_unity" className="navbar-icon" />
-      <span>CultureConnect</span>
-    </div>
-  </Link>
-</div>
+      <div className="navbar-left">
+        <Link to="/" className="navbar-brand">
+          <div className="navbar-brand-container">
+            <img src={unityIcon} alt="img_unity" className="navbar-icon" />
+            <span>CultureConnect</span>
+          </div>
+        </Link>
+      </div>
 
       <div className="navbar-right">
         <Link to="/about" className="navbar-link">

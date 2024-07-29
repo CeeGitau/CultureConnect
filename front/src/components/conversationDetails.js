@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { UserContext } from "../App";
+//import { UserContext } from "../App";
+
+import UserContext from "../pages/UserContext";
 import axios from "axios";
 import Navbar from "./Navbar";
 import Comments from "./comments";

@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
-import { UserContext } from "../App";
+//import { UserContext } from "../App";
+import UserContext from "../pages/UserContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../assests/css/addProfile.css";

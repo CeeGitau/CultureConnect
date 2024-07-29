@@ -4,7 +4,8 @@ import { toast } from "react-toastify";
 import Validation from "../components/validation";
 import "../assests/css/form.css";
 import axios from "axios";
-import { UserContext } from "../App";
+//import { UserContext } from "../App";
+import UserContext from "./UserContext";
 import Loader from "../components/loader";
 
 function Login() {
@@ -53,7 +54,9 @@ function Login() {
             const errorMessage = err.response.data.message;
             if (status === 400) {
               if (errorMessage === "User not found") {
-                setServerErrors([{ msg: "You currently do not have an account" }]);
+                setServerErrors([
+                  { msg: "You currently do not have an account" },
+                ]);
               } else if (errorMessage === "Password is incorrect!") {
                 setServerErrors([{ msg: "Password is incorrect!" }]);
               } else {
@@ -62,7 +65,9 @@ function Login() {
             } else if (status === 401) {
               setServerErrors([{ msg: "Unauthorized access!" }]);
             } else {
-              setServerErrors([{ msg: "An unexpected error occurred. Please try again." }]);
+              setServerErrors([
+                { msg: "An unexpected error occurred. Please try again." },
+              ]);
             }
           } else {
             console.log(err);
@@ -75,7 +80,7 @@ function Login() {
     <>
       {loading && <Loader />}
       <div className="form-container">
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit} data-cy="form">
           <h2>Sign In</h2>
           <div className="form-group">
             <label htmlFor="email" className="form-label">
@@ -88,8 +93,13 @@ function Login() {
               autoComplete="off"
               placeholder="E-mail Address"
               onChange={handleChange}
+              data-cy="email-input"
             />
-            {errors.email && <span className="error">{errors.email}</span>}
+            {errors.email && (
+              <span className="error" data-cy="email-error">
+                {errors.email}
+              </span>
+            )}
             <label htmlFor="name" className="form-label">
               Password:
             </label>
@@ -99,18 +109,27 @@ function Login() {
               name="password"
               placeholder="Password"
               onChange={handleChange}
+              data-cy="password-input"
             />
             {errors.password && (
-              <span className="error">{errors.password}</span>
+              <span className="error" data-cy="password-error">
+                {errors.password}
+              </span>
             )}
           </div>
           {serverErrors.length > 0 &&
             serverErrors.map((error, index) => (
-              <p className="error" key={index}>
+              <p
+                className="error"
+                key={index}
+                data-cy={`server-error-${index}`}
+              >
                 {error.msg}
               </p>
             ))}
-          <button className="form-btn">Sign in</button>
+          <button className="form-btn" data-cy="submit-button">
+            Sign in
+          </button>
           <p>
             Don't have an account? <Link to="/register">Sign up!</Link>
           </p>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { UserContext } from "../App";
+//import { UserContext } from "../App";
+import UserContext from "../pages/UserContext";
 import "../assests/css/comments.css";
 import CustomMoment from "./customMoment";
 import { toast } from "react-toastify";

@@ -3,7 +3,9 @@ import Navbar from "../components/Navbar";
 import "../assests/css/home.css";
 import { Link } from "react-router-dom";
 import unityIcon from "../assests/icons/unity.png";
-import { UserContext } from "../App";
+//import { UserContext } from "../App";
+
+import UserContext from "./UserContext";
 
 function Home() {
   const { user } = useContext(UserContext);

@@ -7,7 +7,8 @@ import "../assests/css/conversation.css";
 import Icons from "../components/icons";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { UserContext } from "../App";
+//import { UserContext } from "../App";
+import UserContext from "./UserContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPen,

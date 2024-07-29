@@ -11,7 +11,9 @@ import {
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { Link } from "react-router-dom";
-import { UserContext } from "../App";
+//import { UserContext } from "../App";
+
+import UserContext from "../pages/UserContext";
 import "../assests/css/conversation.css";
 import Icons from "./icons";
 import { toast } from "react-toastify";
