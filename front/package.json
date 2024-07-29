@@ -70,6 +70,7 @@
     "crypto-browserify": "^3.12.0",
     "css-loader": "^7.1.2",
     "cypress": "^13.13.1",
+    "cypress-file-upload": "^5.0.8",
     "jest": "^27.5.1",
     "path-browserify": "^1.0.1",
     "querystring-es3": "^0.2.1",
