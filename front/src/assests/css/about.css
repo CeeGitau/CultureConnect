@@ -15,6 +15,7 @@ body {
   font-family: "Arial", sans-serif; /* Font family */
   color: #ffffff; /* Text color */
   text-align: center; /* Center align the text */
+  height: 900px;
 }
 
 .about-container p {

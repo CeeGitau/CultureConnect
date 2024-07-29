@@ -11,7 +11,7 @@ export const VerifyUser = (req, res, next) => {
     jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, payload) => {
       try {
         if (err) {
-          return res.status(401).json({ error: "Unauthorised" });
+          return res.status(401).json({ message: "Unauthorized" });
         }
         const user = await UserModel.findOne({ _id: payload._id }).select(
           "-password"
@@ -19,10 +19,10 @@ export const VerifyUser = (req, res, next) => {
         req.user = user;
         next();
       } catch (error) {
-        return res.status(500).json({ error: error.message });
+        return res.status(500).json({ message: error.message });
       }
     });
   } else {
-    return res.status(403).json({ error: "Forbidden" });
+    return res.status(403).json({ message: "Forbidden" });
   }
 };

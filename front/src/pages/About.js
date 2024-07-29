@@ -24,7 +24,7 @@ function About() {
           preserve what makes your heritage special. At CultureConnect, we
           believe in the power of storytelling to bridge gaps and foster
           understanding. 
-          <br/>Our mission is to create an inclusive and engaging
+          <br/><br/>Our mission is to create an inclusive and engaging
           environment where you can document and discuss your cultural
           experiences. By connecting with others, you can explore a world of
           traditions and practices that shape our global tapestry. Join us in
