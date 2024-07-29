@@ -45,7 +45,7 @@ describe("Test User Login", () => {
   });
 
   /*it("Should handle successful form submission", () => {
-    cy.intercept("POST", "/login", {
+    cy.intercept("POST", "login", {
       statusCode: 200,
       body: { success: true, token: "fakeToken", user: { name: "Isaac" } },
     }).as("login");
@@ -59,7 +59,7 @@ describe("Test User Login", () => {
   });
 
   it("Should handle server validation errors", () => {
-    cy.intercept("POST", "https://culture-connect2.vercel.app/CultureConnect/login", {
+    cy.intercept("POST", "login", {
       statusCode: 400,
       body: { message: "User not found" },
     }).as("login");

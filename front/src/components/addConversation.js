@@ -110,9 +110,13 @@ function AddConversation() {
       {loading && <Loader />}
       <Navbar />
       <div className="add-conversation">
-        <form className="conversation-form" onSubmit={handleSubmit}>
+        <form
+          className="conversation-form"
+          onSubmit={handleSubmit}
+          data-cy="form"
+        >
           <label htmlFor="Category">Select a Category</label>
-          <select name="category" onChange={handleChange}>
+          <select name="category" onChange={handleChange} data-cy="category">
             <option value="" disabled>
               Select Category
             </option>
@@ -127,6 +131,7 @@ function AddConversation() {
             placeholder="Title"
             name="title"
             onChange={handleChange}
+            data-cy="title"
           />
           <label htmlFor="thoughts">Thoughts</label>
           <textarea
@@ -135,6 +140,7 @@ function AddConversation() {
             name="thoughts"
             rows="10"
             cols="30"
+            data-cy="thoughts"
           ></textarea>
           <label htmlFor="imageUpload">Upload Image:</label>
           <input
@@ -142,6 +148,7 @@ function AddConversation() {
             accept="image/*"
             type="file"
             onChange={handleImageUpload}
+            data-cy="image-upload"
           />
           <label htmlFor="audioUpload">Upload Audio:</label>
           <input
@@ -149,10 +156,15 @@ function AddConversation() {
             accept="audio/*"
             type="file"
             onChange={handleAudioUpload}
+            data-cy="audio-upload"
           />
           <label htmlFor="author">Author: {user.name}</label>{" "}
           <div className="button-container">
-            <button className="submit-button" type="submit">
+            <button
+              className="submit-button"
+              type="submit"
+              data-cy="submit-button"
+            >
               Post
             </button>
             <button className="cancel-button" type="button" onClick={back}>
