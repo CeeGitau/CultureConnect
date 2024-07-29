@@ -55,10 +55,10 @@ function Register() {
   return (
     <>
       {loading && <Loader />}
-      <div className="form-container">
-        <form className="form" onSubmit={handleSubmit}>
+      <div className="form-container" data-cy="form-container">
+        <form className="form" onSubmit={handleSubmit} data-cy="form">
           <h2>Sign Up</h2>
-          <div className="form-group">
+          <div className="form-group" data-cy="form-group">
             <label htmlFor="name" className="form-label">
               Name:
             </label>
@@ -68,8 +68,13 @@ function Register() {
               name="name"
               placeholder="Name"
               onChange={handleChange}
+              data-cy="name-input"
             />
-            {errors.name && <span className="error">{errors.name}</span>}
+            {errors.name && (
+              <span className="error">
+                {errors.name}
+              </span>
+            )}
             <label htmlFor="email" className="form-label">
               E-mail:
             </label>
@@ -80,8 +85,13 @@ function Register() {
               autoComplete="off"
               placeholder="E-mail Address"
               onChange={handleChange}
+              data-cy="email-input"
             />
-            {errors.email && <span className="error">{errors.email}</span>}
+            {errors.email && (
+              <span className="error" data-cy="email-error">
+                {errors.email}
+              </span>
+            )}
             <label htmlFor="name" className="form-label">
               Password:
             </label>
@@ -91,21 +101,33 @@ function Register() {
               name="password"
               placeholder="Password"
               onChange={handleChange}
+              data-cy="password-input"
             />
             {errors.password && (
-              <span className="error">{errors.password}</span>
+              <span className="error" data-cy="password-error">
+                {errors.password}
+              </span>
             )}
           </div>
 
           {serverErrors.length > 0 &&
             serverErrors.map((error, index) => (
-              <p className="error" key={index}>
+              <p
+                className="error"
+                key={index}
+                data-cy={`server-error-${index}`}
+              >
                 {error.msg}
               </p>
             ))}
-          <button className="form-btn">Sign up!</button>
+          <button className="form-btn" data-cy="submit-button">
+            Sign up!
+          </button>
           <p>
-            Already have an account? <Link to="/login">Login</Link>
+            Already have an account?{" "}
+            <Link to="/login" data-cy="login-link">
+              Login
+            </Link>
           </p>
         </form>
       </div>

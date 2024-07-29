@@ -22,7 +22,7 @@ export default function Validation(values) {
   }
 
   if (!values.password) {
-    errors.password = "This field should not be empty";
+    errors.password = "This field here should not be empty";
     // } else if (!password_pattern.test(values.password)) {
     //  errors.password =
     //    "Password should contain at least 8 characters (1 letter, 1 uppercase character and 1 number)";
